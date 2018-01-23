@@ -1,0 +1,75 @@
+ <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.project.finalyear.thaispellinggame.fragment.ThreeLettersFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="อักษรสามหมู่"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tvHighPitched"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/bg_bnt_5"
+                android:gravity="center"
+                android:text="พยัญชนะอักษรสูง"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvMidrange"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/bg_bnt_6"
+                android:gravity="center"
+                android:text="พยัญชนะอักษรกลาง"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvLowPitched"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/bg_bnt_7"
+                android:gravity="center"
+                android:text="พยัญชนะอักษรต่ำ"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnBackLeaning"
+                android:layout_gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_bnt_grey"
+                android:text="@string/name_menu_learn" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

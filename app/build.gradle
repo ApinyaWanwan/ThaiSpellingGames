@@ -6,6 +6,7 @@ android {
         applicationId "com.project.finalyear.thaispellinggame"
         minSdkVersion 16
         targetSdkVersion 26
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -41,6 +42,11 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.theartofdev.edmodo:android-image-cropper:2.5.+'
+
+    compile 'com.facebook.android:facebook-android-sdk:4.4.0'
+
+    //fonts
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
 }
 
 

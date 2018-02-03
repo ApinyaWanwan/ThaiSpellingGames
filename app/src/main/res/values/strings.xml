@@ -1,5 +1,8 @@
 <resources>
 
+    <string name="facebook_app_id">2088731947820077</string>
+    <string name="fb_login_protocol_scheme">fb2088731947820077</string>
+
     <string name="app_name">ThaiSpellingGame</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

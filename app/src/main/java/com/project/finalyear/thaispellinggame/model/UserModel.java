@@ -15,6 +15,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserModel {
 
     public String name;
+//    public String score;
+//    public String rank;
+//    public String level;
     //public String image;
     //public boolean online;
 
@@ -24,6 +27,8 @@ public class UserModel {
 
     public UserModel(String name) {
         this.name = name;
+//        this.score = score;
+//        this.rank = rank;
         //this.image = image;
         //this.online = online;
     }
@@ -36,7 +41,31 @@ public class UserModel {
         this.name = name;
     }
 
-//    public String getImage() {
+//    public String getScore() {
+//        return score;
+//    }
+//
+//    public void setScore(String score) {
+//        this.score = score;
+//    }
+//
+//    public String getRank() {
+//        return rank;
+//    }
+//
+//    public void setRank(String rank) {
+//        this.rank = rank;
+//    }
+//
+//    public String getLevel() {
+//        return level;
+//    }
+//
+//    public void setLevel(String level) {
+//        this.level = level;
+//    }
+
+    //    public String getImage() {
 //        return image;
 //    }
 //

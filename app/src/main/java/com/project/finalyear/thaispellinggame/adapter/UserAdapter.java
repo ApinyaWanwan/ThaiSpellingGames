@@ -37,8 +37,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
         UserModel user = list.get(position);
+        holder.mName.setText(user.getName());
 
-        holder.mName.setText(user.name);
         //holder.mImage.setImageResource(Integer.parseInt(user.image));
 
 //        String status = holder.online.toString();
@@ -66,7 +66,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView mName;
-        ImageView mImage;
+        //ImageView mImage;
         //ImageView mOnline;
         //Boolean online;
 
@@ -74,7 +74,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             super(itemView);
 
             mName = (TextView) itemView.findViewById(R.id.user_single_name);
-            mImage = (ImageView) itemView.findViewById(R.id.user_single_image);
+            //mImage = (ImageView) itemView.findViewById(R.id.user_single_image);
 
             //mOnline = (ImageView) itemView.findViewById(R.id.all_user_status);
 

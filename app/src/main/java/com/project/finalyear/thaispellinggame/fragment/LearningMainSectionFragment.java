@@ -1,12 +1,15 @@
 package com.project.finalyear.thaispellinggame.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -27,7 +30,8 @@ ImageView btnMaekok;
     ImageView btnMaekery;
     ImageView btnMaeguew;
     Button btnBackLeaning;
-    Button btnGameLearn;
+    Button btnGameLeaning;
+
 
     public LearningMainSectionFragment() {
         // Required empty public constructor
@@ -56,7 +60,7 @@ ImageView btnMaekok;
     }
 
     private void initInstances(View view) {
-        final Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale);
+        final Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.scale);
         btnMaeguew = (ImageView) view.findViewById(R.id.btnMaeguew);
         btnMaekon = (ImageView) view.findViewById(R.id.btnMaekon);
         btnMaekom = (ImageView) view.findViewById(R.id.btnMaekom);
@@ -66,7 +70,7 @@ ImageView btnMaekok;
         btnMaekery = (ImageView) view.findViewById(R.id.btnMaekery);
         btnMaekong = (ImageView) view.findViewById(R.id.btnMaekong);
         btnBackLeaning = (Button) view.findViewById(R.id.btnBackLeaning);
-        btnGameLearn = (Button) view.findViewById(R.id.btnGameLearn);
+        btnGameLeaning = (Button) view.findViewById(R.id.btnGameLeaning);
 
 
         btnMaeguew.setOnClickListener(new View.OnClickListener() {
@@ -124,17 +128,15 @@ ImageView btnMaekok;
                 FragmentLearningMain();
             }
         });
-
-        btnGameLearn.setOnClickListener(new View.OnClickListener() {
+        btnGameLeaning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),GameLearnActivity.class);
+                Intent intent = new Intent(getActivity(), GameLearnActivity.class);
                 startActivity(intent);
             }
         });
 
     }
-
     public void FragmentLearningMaeGuew() {
         Fragment fragment = new LearningSectionMaegewFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

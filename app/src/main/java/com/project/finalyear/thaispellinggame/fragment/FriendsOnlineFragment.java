@@ -29,122 +29,122 @@ import java.util.List;
 
 public class FriendsOnlineFragment extends Fragment {
 
-//    private List<UserModel> result;
-//    private UserAdapter userAdapter;
-//    private RecyclerView recyclerView;
-//
-//    private FirebaseDatabase database;
-//    private DatabaseReference reference;
-//
-//    private FirebaseAuth mAuth;
-//    private FirebaseUser currentUser;
-//
-//    @Nullable
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//
-//        View view = inflater.inflate(R.layout.fragment_friends_online, container, false);
-//        initInstance(view);
-//
-//        return view;
-//    }
-//
-//    private void initInstance(View view){
-//
-//        mAuth = FirebaseAuth.getInstance();
-//        currentUser = mAuth.getCurrentUser();
-//
-//        if (currentUser != null){
-//            String online_user_id = mAuth.getCurrentUser().getUid();
-//            reference = FirebaseDatabase.getInstance().getReference()
-//                    .child("Users").child(online_user_id);
-//
-//            reference.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    reference.child("online").onDisconnect().setValue(false);
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//
-//                }
-//            });
-//        }
-//
-//        database = FirebaseDatabase.getInstance();
-//        reference = database.getReference("Users");
-//
-//        result = new ArrayList<>();
-//
-//        recyclerView = (RecyclerView) view.findViewById(R.id.user_list);
-//        recyclerView.setHasFixedSize(true);
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-//        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//
-//        recyclerView.setLayoutManager(linearLayoutManager);
-//
-//
-//        userAdapter = new UserAdapter(result);
-//        recyclerView.setAdapter(userAdapter);
-//
-//        updateList();
-//    }
-//
-//
-//    private void updateList(){
-//
-//        reference.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                result.add(dataSnapshot.getValue(UserModel.class));
-//                userAdapter.notifyDataSetChanged();
-//
-//            }
-//
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//                UserModel model = dataSnapshot.getValue(UserModel.class);
-//
-//                int index = getItemIndex(model);
-//
-//                result.set(index, model);
-//                userAdapter.notifyItemChanged(index);
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//                UserModel model = dataSnapshot.getValue(UserModel.class);
-//
-//                int index = getItemIndex(model);
-//
-//                result.remove(index);
-//                userAdapter.notifyItemRemoved(index);
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
-//
-//    private int getItemIndex(UserModel user){
-//        int index = 0;
-//
-//        for (int i=0; i<result.size(); i++){
-//            if (result.get(i).name.equals(user.name));
-//        }
-//
-//        return index;
-//
-//    }
+    private List<UserModel> result;
+    private UserAdapter userAdapter;
+    private RecyclerView recyclerView;
+
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_friends_online, container, false);
+        initInstance(view);
+
+        return view;
+    }
+
+    private void initInstance(View view){
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("Users");
+
+        if (currentUser != null){
+            String online_user_id = mAuth.getCurrentUser().getUid();
+            reference = FirebaseDatabase.getInstance().getReference()
+                    .child("Users").child(online_user_id);
+
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    reference.child("online").onDisconnect().setValue(false);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+        result = new ArrayList<>();
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.user_list);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+
+        userAdapter = new UserAdapter(result);
+        recyclerView.setAdapter(userAdapter);
+
+        updateList();
+    }
+
+
+    private void updateList(){
+
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                result.add(dataSnapshot.getValue(UserModel.class));
+                userAdapter.notifyDataSetChanged();
+
+            }
+
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                UserModel model = dataSnapshot.getValue(UserModel.class);
+
+                int index = getItemIndex(model);
+
+                result.set(index, model);
+                userAdapter.notifyItemChanged(index);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                UserModel model = dataSnapshot.getValue(UserModel.class);
+
+                int index = getItemIndex(model);
+
+                result.remove(index);
+                userAdapter.notifyItemRemoved(index);
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private int getItemIndex(UserModel user){
+        int index = 0;
+
+        for (int i=0; i<result.size(); i++){
+            if (result.get(i).name.equals(user.name));
+        }
+
+        return index;
+
+    }
 }

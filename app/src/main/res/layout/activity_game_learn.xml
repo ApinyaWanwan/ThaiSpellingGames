@@ -222,8 +222,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="เล่นอีกครั้ง"
-        android:textSize="30sp"
+        android:background="@drawable/button_playagain"
         android:visibility="invisible"/>
 
 </RelativeLayout>

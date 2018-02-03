@@ -22,11 +22,11 @@ public class LowPitchedPageTwoFragment extends Fragment {
     ImageView imgNext;
     ImageView voiceToTunk;
     ImageView voiceNoNu;
-    TextView voicePoPan;
+    ImageView voicePoPan;
     ImageView voiceFoFun;
     ImageView voicePoSuumpao;
     ImageView voiceMoMar;
-    TextView voiceYoYark;
+    ImageView voiceYoYark;
     ImageView voiceRoRue;
     ImageView voiceLoLing;
     ImageView voiceWoWan;
@@ -94,7 +94,7 @@ public class LowPitchedPageTwoFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voicePoPan = (TextView) view.findViewById(R.id.voicePoPan);
+        voicePoPan = (ImageView) view.findViewById(R.id.voicePoPan);
         voicePoPan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,7 +130,7 @@ public class LowPitchedPageTwoFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceYoYark = (TextView) view.findViewById(R.id.voiceYoYark);
+        voiceYoYark = (ImageView) view.findViewById(R.id.voiceYoYark);
         voiceYoYark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

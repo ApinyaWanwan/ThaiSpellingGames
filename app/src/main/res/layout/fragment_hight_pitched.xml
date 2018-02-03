@@ -80,15 +80,16 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/voiceToTan"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_5"
-                    android:gravity="center"
-                    android:text="ฐ.ฐาน"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voiceToTan"
+                    android:src="@drawable/to_than"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
                     android:layout_height="100dp"
@@ -141,16 +142,16 @@
                     app:civ_border_color="#000000"
                     app:civ_border_width="2dp" />
 
-
-                <TextView
-                    android:id="@+id/voiceSoRuesee"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_7"
-                    android:gravity="center"
-                    android:text="ษ.ฤษี"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voiceSoRuesee"
+                    android:src="@drawable/so_ruesee"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
             </LinearLayout>
             <LinearLayout

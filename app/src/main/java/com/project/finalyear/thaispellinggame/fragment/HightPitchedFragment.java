@@ -23,12 +23,12 @@ public class HightPitchedFragment extends Fragment {
     ImageView voiceKhoKhai;
     ImageView voiceKhoKhod;
     ImageView voiceChoChing;
-    TextView voiceToTan;
+    ImageView voiceToTan;
     ImageView voiceToTung;
     ImageView voicePoPueng;
     ImageView voiceFoFha;
     ImageView voiceSoSara;
-    TextView voiceSoRuesee;
+    ImageView voiceSoRuesee;
     ImageView voiceSoSue;
     ImageView voiceHoHeeb;
     MediaPlayer voiceHightPitched;
@@ -99,7 +99,7 @@ public class HightPitchedFragment extends Fragment {
                 voiceHightPitched.start();
             }
         });
-        voiceToTan = (TextView) view.findViewById(R.id.voiceToTan);
+        voiceToTan = (ImageView) view.findViewById(R.id.voiceToTan);
         voiceToTan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -149,7 +149,7 @@ public class HightPitchedFragment extends Fragment {
 
             }
         });
-        voiceSoRuesee = (TextView) view.findViewById(R.id.voiceSoRuesee);
+        voiceSoRuesee = (ImageView) view.findViewById(R.id.voiceSoRuesee);
         voiceSoRuesee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

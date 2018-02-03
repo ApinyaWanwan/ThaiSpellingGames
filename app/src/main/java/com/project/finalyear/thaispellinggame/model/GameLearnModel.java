@@ -1,9 +1,13 @@
 package com.project.finalyear.thaispellinggame.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.firebase.database.IgnoreExtraProperties;
+
 /**
  * Created by Namwan on 1/17/2018.
  */
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GameLearnModel {
 
     private String word;

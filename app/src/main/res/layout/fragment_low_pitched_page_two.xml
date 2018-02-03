@@ -58,17 +58,26 @@
                     android:src="@drawable/no_nu"
                     app:civ_border_color="#000000"
                     app:civ_border_width="2dp" />
-
-
-                <TextView
-                    android:id="@+id/voicePoPan"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_3"
-                    android:gravity="center"
-                    android:text="พ.พาน"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voicePoPan"
+                    android:src="@drawable/po_pan"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
+
+                <!--<TextView-->
+                    <!---->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="70dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="@drawable/bg_bnt_3"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="พ.พาน"-->
+                    <!--android:textSize="20sp" />-->
 
             </LinearLayout>
 
@@ -117,16 +126,17 @@
                 android:layout_height="100dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/voiceYoYark"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_5"
-                    android:gravity="center"
-                    android:text="ย.ยักษ์"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voiceYoYark"
+                    android:src="@drawable/yo_yuk"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
                     android:layout_height="100dp"

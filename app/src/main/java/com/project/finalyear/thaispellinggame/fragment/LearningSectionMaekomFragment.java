@@ -1,6 +1,8 @@
 package com.project.finalyear.thaispellinggame.fragment;
 
+import android.content.Context;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,6 +17,8 @@ public class LearningSectionMaekomFragment extends Fragment {
     ImageView imgBack;
     ImageView imgNext;
     MediaPlayer mediaPlayer;
+    ImageView imgPlay;
+    ImageView imgStop;
 
     public LearningSectionMaekomFragment() {
         // Required empty public constructor
@@ -37,7 +41,7 @@ public class LearningSectionMaekomFragment extends Fragment {
     }
 
     private void PlaySound() {
-      mediaPlayer = MediaPlayer.create(getActivity(), R.raw.maekom);
+      mediaPlayer = MediaPlayer.create(getActivity(),R.raw.maekom);
         mediaPlayer.start();
     }
 
@@ -56,17 +60,26 @@ public class LearningSectionMaekomFragment extends Fragment {
                 FragmentLearningMainSection();
             }
         });
-
+        imgPlay = (ImageView) view.findViewById(R.id.imgPlay);
+        imgStop = (ImageView) view.findViewById(R.id.imgStop);
+        imgPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mediaPlayer.start();
+                imgStop.setVisibility(View.VISIBLE);
+                imgPlay.setVisibility(View.INVISIBLE);
+            }
+        });
+        imgStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mediaPlayer.pause();
+                imgPlay.setVisibility(View.VISIBLE);
+                imgStop.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
-
-    public void FragmentLearningMain() {
-        Fragment fragment = new FrequentlyLearningFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_main, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
     public void FragmentLearningMainSection() {
         Fragment fragment = new LearningMainSectionFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

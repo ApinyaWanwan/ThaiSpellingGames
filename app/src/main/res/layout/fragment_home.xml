@@ -19,12 +19,12 @@
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:background="@color/colorHomeTabName" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilePic"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_alignBottom="@id/view"
                 android:layout_marginLeft="10dp"
@@ -39,7 +39,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_toRightOf="@id/profilePic"
                 android:text="Username"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -83,6 +83,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -95,9 +97,8 @@
                         android:id="@+id/level"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:text="Level"
-                        android:textColor="@color/colorAccent"
+                        android:text="LV."
+                        android:textColor="#A965A9"
                         android:textSize="30dp" />
 
                     <TextView
@@ -107,118 +108,59 @@
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/level"
                         android:text="0"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="#A965A9"
                         android:textSize="30dp" />
 
-                    <ProgressBar
-                        android:id="@+id/home_progressbar"
-                        android:layout_width="200dp"
-                        android:layout_height="10dp"
-                        android:layout_toRightOf="@id/tvLevel"
-                        android:layout_centerVertical="true"
+                    <ImageView
+                        android:id="@+id/progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:layout_gravity="center_horizontal"
-                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"/>
+                        android:layout_toRightOf="@id/tvLevel"
+                        android:src="@drawable/progressbar"/>
                 </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:src="@drawable/indian"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:paddingBottom="20dp"
+                android:gravity="center_horizontal"
                 android:paddingTop="10dp">
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
 
-                    <ImageView
-                        android:id="@+id/ic_bestScore"
-                        android:layout_width="30dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_crown" />
+                    <Button
+                        android:id="@+id/btn_best_score"
+                        android:layout_width="200dp"
+                        android:layout_height="70dp"
+                        android:layout_marginBottom="20dp"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp"
+                        android:background="@drawable/button_score"/>
 
-                    <TextView
-                        android:id="@+id/bestScore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_toRightOf="@id/ic_bestScore"
-                        android:text="คะแนนที่ดีที่สุด: "
-                        android:textSize="20dp" />
 
-                    <TextView
-                        android:id="@+id/tvBestScore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_toRightOf="@id/bestScore"
-                        android:text="number "
-                        android:textSize="20dp" />
 
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
-
-                    <ImageView
-                        android:id="@+id/ic_score"
-                        android:layout_width="25dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_coins" />
-
-                    <TextView
-                        android:id="@+id/score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_toRightOf="@id/ic_score"
-                        android:text="คะแนนสะสม:"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/tvScore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_toRightOf="@id/score"
-                        android:text="number"
-                        android:textSize="20dp" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <Button
+                        android:id="@+id/btn_score"
+                        android:layout_width="200dp"
+                        android:layout_height="70dp"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp"
+                        android:background="@drawable/button_score"
+                        android:layout_marginBottom="50dp"/>
 
                 <Button
                     android:id="@+id/btnPlayGame"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
                     android:layout_centerHorizontal="true"
-                    android:background="@color/colorPrimaryButton"
-                    android:text="เริ่มเกม"
-                    android:textColor="@color/colorTextButton"
-                    android:textSize="20dp" />
+                    android:background="@drawable/button_play"/>
 
-            </RelativeLayout>
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
 

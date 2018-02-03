@@ -1,6 +1,7 @@
 package com.project.finalyear.thaispellinggame.fragment;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,7 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,8 +44,10 @@ import static android.app.Activity.RESULT_OK;
 public class EditProfileFragment extends Fragment {
 
     private CircleImageView edit_profile_image;
-    private TextView edit_profile_name;
-    private TextView edit_profile_email;
+    Button editProfileSuccess;
+    EditText editUsername;
+    EditText editEmail;
+    Button btnSave;
     //private Button btn_change_image;
 
     public final String img_profile_default_url = "https://firebasestorage.googleapis.com/v0/b/thaispellinggame-28cfe.appspot.com/o/Profile_Images%2Fdefault_profile_pic.png?alt=media&token=e7b8453d-82dd-431a-a93f-fb793081359b";
@@ -75,8 +80,9 @@ public class EditProfileFragment extends Fragment {
 
 
         edit_profile_image = (CircleImageView) view.findViewById(R.id.edit_profile_image);
-        edit_profile_name = (TextView) view.findViewById(R.id.edit_profile_name);
-        edit_profile_email = (TextView) view.findViewById(R.id.edit_profile_email);
+        editUsername = (EditText) view.findViewById(R.id.editUsername);
+        editEmail = (EditText) view.findViewById(R.id.editEmail);
+        btnSave = (Button) view.findViewById(R.id.btnSaveEditProfile);
         //btn_change_image = (Button) view.findViewById(R.id.change_image_button);
 
 
@@ -88,8 +94,10 @@ public class EditProfileFragment extends Fragment {
                 String email = dataSnapshot.child("email").getValue().toString();
                 String image = dataSnapshot.child("image").getValue().toString();
 
-                edit_profile_name.setText(name);
-                edit_profile_email.setText(email);
+                // get data show to edit text
+                editUsername.setText(name);
+                editEmail.setText(email);
+
 
                 if (image.equals("default_profile_pic")) {
 
@@ -120,6 +128,32 @@ public class EditProfileFragment extends Fragment {
                 startActivityForResult(galleryIntent, Gallery_Pick);
             }
         });
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String name = editUsername.getText().toString();
+                String email = editEmail.getText().toString();
+
+
+                // set data to firebase
+                if (name.isEmpty()) {
+                    getUserDatabaseRef.child("name").setValue(name);
+                } else if (email.isEmpty()) {
+                    getUserDatabaseRef.child("email").setValue(email);
+                } else if (name.isEmpty() && email.isEmpty()) {
+                    getUserDatabaseRef.child("name").setValue(name);
+                    getUserDatabaseRef.child("email").setValue(email);
+                }else {
+                    getUserDatabaseRef.child("name").setValue(name);
+                    getUserDatabaseRef.child("email").setValue(email);
+                }
+                // show dialog success edit profile
+                dialogProfile();
+                editUsername.setText("");
+                editEmail.setText("");
+            }
+        });
     }
 
     @Override
@@ -127,7 +161,6 @@ public class EditProfileFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == Gallery_Pick && resultCode == RESULT_OK && data != null){
-
             Uri imageUri = data.getData();
             CropImage.activity(imageUri)
                     .setGuidelines(CropImageView.Guidelines.ON)
@@ -170,5 +203,18 @@ public class EditProfileFragment extends Fragment {
                 Exception error = result.getError();
             }
         }
+    }
+    private void dialogProfile() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_popup_edit_profile);
+        dialog.show();
+        editProfileSuccess = (Button) dialog.findViewById(R.id.editProfileSuccess);
+        editProfileSuccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
     }
 }

@@ -1,5 +1,7 @@
 package com.project.finalyear.thaispellinggame.fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.project.finalyear.thaispellinggame.R;
+import com.project.finalyear.thaispellinggame.activity.GameOneActivity;
 
 
 public class LearningMainFragment extends Fragment{

@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Toolbar;
 
 import com.project.finalyear.thaispellinggame.R;
-import com.project.finalyear.thaispellinggame.fragment.FriendsOnlineFragment;
 import com.project.finalyear.thaispellinggame.fragment.HomeFragment;
 import com.project.finalyear.thaispellinggame.fragment.RankFragment;
+import com.project.finalyear.thaispellinggame.fragment.UserOnlineFragment;
 
 
 public class ViewPagerAdapter extends Fragment {
@@ -66,7 +66,7 @@ public class ViewPagerAdapter extends Fragment {
         public Fragment getItem(int position) {
             switch (position){
                 case 0: return new HomeFragment();
-                case 1: return new FriendsOnlineFragment();
+                case 1: return new UserOnlineFragment();
                 case 2: return new RankFragment();
             }
             return null;

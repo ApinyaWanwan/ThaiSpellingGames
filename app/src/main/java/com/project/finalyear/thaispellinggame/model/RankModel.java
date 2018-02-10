@@ -2,19 +2,50 @@ package com.project.finalyear.thaispellinggame.model;
 
 public class RankModel {
     public String name;
+    public String image;
+    public String rank;
     public String score;
     public String level;
-    public String rank;
 
-    public RankModel() {
 
+
+    public String getName() {
+        return name;
     }
 
-
-    public RankModel(String name, String score, String level, String rank) {
+    public void setName(String name) {
         this.name = name;
-        this.score = score;
-        this.level = level;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
         this.rank = rank;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 }

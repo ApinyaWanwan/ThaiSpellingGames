@@ -8,16 +8,6 @@
 
     <include layout="@layout/content_game_one" />
 
-    <ImageView
-        android:id="@+id/imgBonus"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="100dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/bg_bonus"
-        android:visibility="invisible" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -356,4 +346,15 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgBonus"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/bg_bonus"
+        android:visibility="invisible" />
+
 </RelativeLayout>

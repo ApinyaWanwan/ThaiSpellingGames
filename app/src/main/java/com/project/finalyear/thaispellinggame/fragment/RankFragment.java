@@ -2,121 +2,85 @@ package com.project.finalyear.thaispellinggame.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.project.finalyear.thaispellinggame.R;
 import com.project.finalyear.thaispellinggame.adapter.RankAdapter;
+import com.project.finalyear.thaispellinggame.model.RankData;
 import com.project.finalyear.thaispellinggame.model.RankModel;
-import com.project.finalyear.thaispellinggame.model.RoundOneModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class RankFragment extends Fragment {
-    RecyclerView recyclerViewRank;
-    private RankAdapter adapter;
-    private List<RankModel> rankModels;
 
-    private FirebaseDatabase database;
-    private DatabaseReference reference;
+    private DatabaseReference mUserDatabase;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+
+    List<RankData> rankData;
+    RecyclerView recyclerView;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_rank, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewRank);
 
-        checkUserOnline();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 
-        initInstance(view);
+        mUserDatabase = FirebaseDatabase.getInstance().getReference();
+        Query query = mUserDatabase.child("Users").orderByChild("score").limitToFirst(50);
 
-        return view;
-    }
-
-    private void checkUserOnline() {
-    }
-
-    private void initInstance(View view) {
-
-        Firebase.setAndroidContext(getContext());
-        rankModels = new ArrayList<>();
-        recyclerViewRank = (RecyclerView) view.findViewById(R.id.recyclerViewRank);
-        recyclerViewRank.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-        recyclerViewRank.setLayoutManager(linearLayoutManager);
-//        createResult();
-        adapter = new RankAdapter(rankModels);
-        recyclerViewRank.setAdapter(adapter);
-        //updateList();
-    }
-
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case 0:
-                break;
-//            case 1:
-//                break;
-//            case 2:
-//                break;
-//            case 3:
-//                break;
-        }
-        return super.onContextItemSelected(item);
-    }
-//
-//    private void createResult() {
-//        rankModels.add(new RankModel("", "", "", ""));
-//    }
-
-    private void updateList() {
-        reference.addChildEventListener(new ChildEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                rankModels.add(dataSnapshot.getValue(RankModel.class));
-                adapter.notifyDataSetChanged();
-            }
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                RankModel model = dataSnapshot.getValue(RankModel.class);
-                int index = getItemIndex(model);
-                rankModels.remove(index);
-                adapter.notifyItemRemoved(index);
-            }
+                rankData = new ArrayList<>();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                RankModel model = dataSnapshot.getValue(RankModel.class);
-                int index = getItemIndex(model);
-                rankModels.set(index, model);
-                adapter.notifyItemChanged(index);
+                    RankData listData = new RankData();
 
-            }
+                    RankModel rankModel = dataSnapshot1.getValue(RankModel.class);
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                    String name = rankModel.getName();
+                    String score = rankModel.getScore();
+                    String rank = rankModel.getRank();
+                    String level = rankModel.getLevel();
+                    String image = rankModel.getImage();
 
+                    listData.setName(name);
+                    listData.setScore(score);
+                    listData.setRank(rank);
+                    listData.setLevel(level);
+                    listData.setImage(image);
+
+                    rankData.add(listData);
+                }
+
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+                RankAdapter rankAdapter = new RankAdapter(rankData);
+                recyclerView.setAdapter(rankAdapter);
             }
 
             @Override
@@ -124,13 +88,7 @@ public class RankFragment extends Fragment {
 
             }
         });
-    }
 
-    private int getItemIndex(RankModel mRank) {
-        int index = -1;
-        for (int i = 1; i < rankModels.size(); i++) {
-
-        }
-        return index;
+        return view;
     }
 }

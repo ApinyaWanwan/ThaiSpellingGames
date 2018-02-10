@@ -1,69 +1,88 @@
 package com.project.finalyear.thaispellinggame.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.finalyear.thaispellinggame.R;
+import com.project.finalyear.thaispellinggame.model.RankData;
 import com.project.finalyear.thaispellinggame.model.RankModel;
 import com.project.finalyear.thaispellinggame.model.RoundOneModel;
+import com.project.finalyear.thaispellinggame.model.UserData;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class RankAdapter extends RecyclerView.Adapter <RankAdapter.RankViewHolder>{
-    private List<RankModel> list;
+public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder> {
 
-    public RankAdapter(List<RankModel> list) {
-        this.list = list;
+    private List<RankData> rankData;
+    public final String img_profile_default_url = "https://firebasestorage.googleapis.com/v0/b/thaispellinggame-28cfe.appspot.com/o/Profile_Images%2Fdefault_profile_pic.png?alt=media&token=e7b8453d-82dd-431a-a93f-fb793081359b";
+
+    public RankAdapter(List<RankData> rankData) {
+        this.rankData = rankData;
     }
 
     @Override
     public RankViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new RankViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rank, parent, false));
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rank,parent,false);
 
+        RankViewHolder viewHolder = new RankViewHolder(view);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final RankViewHolder holder, int position) {
-        RankModel rankModel = list.get(position);
-        holder.tvName.setText(rankModel.name);
-        holder.tvLevel.setText(rankModel.level);
-        holder.tvScore.setText(rankModel.score);
-        holder.tvRank.setText(rankModel.rank);
-        holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
-            @Override
-            public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-                contextMenu.add(holder.getAdapterPosition(), 0, 0, "name");
-                contextMenu.add(holder.getAdapterPosition(), 1, 1, "rank");
-                contextMenu.add(holder.getAdapterPosition(), 2, 2, "level");
-                contextMenu.add(holder.getAdapterPosition(), 3, 3, "score");
-            }
-        });
+    public void onBindViewHolder(RankViewHolder holder, int position) {
+
+        RankData data = rankData.get(position);
+        holder.mName.setText(data.getName());
+        holder.mScore.setText(data.getScore());
+        holder.mRank.setText(data.getRank());
+        holder.mLevel.setText(data.getLevel());
+
+        if (data.getImage().equals("default_profile_pic")){
+            Picasso.with(holder.mImage.getContext())
+                    .load(img_profile_default_url)
+                    .resize(70, 70)
+                    .centerCrop()
+                    .into(holder.mImage);
+        } else {
+            Picasso.with(holder.mImage.getContext())
+                    .load(data.getImage())
+                    .resize(70, 70)
+                    .centerCrop()
+                    .into(holder.mImage);
+        }
 
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return rankData.size();
     }
 
-    class RankViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName;
-        TextView tvScore;
-        TextView tvLevel;
-        TextView tvRank;
+    public class RankViewHolder extends RecyclerView.ViewHolder {
+
+        TextView mName;
+        TextView mScore;
+        TextView mRank;
+        TextView mLevel;
+        ImageView mImage,defaultImg;
 
         public RankViewHolder(View itemView) {
             super(itemView);
-            tvName = (TextView) itemView.findViewById(R.id.tvName);
-            tvScore = (TextView) itemView.findViewById(R.id.tvScore);
-            tvLevel = (TextView) itemView.findViewById(R.id.tvLevel);
-            tvRank = (TextView) itemView.findViewById(R.id.tvRank);
+
+            mName = (TextView) itemView.findViewById(R.id.user_name);
+            mScore = (TextView) itemView.findViewById(R.id.user_score);
+            mRank = (TextView) itemView.findViewById(R.id.user_rank);
+            mLevel = (TextView) itemView.findViewById(R.id.user_level);
+            mImage = (ImageView) itemView.findViewById(R.id.user_image);
+            defaultImg = (ImageView) itemView.findViewById(R.id.user_single_image);
+
         }
     }
-
-
 }

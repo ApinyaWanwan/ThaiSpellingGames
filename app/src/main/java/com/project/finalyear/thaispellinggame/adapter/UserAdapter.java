@@ -1,8 +1,7 @@
 package com.project.finalyear.thaispellinggame.adapter;
 
-import android.media.Image;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.finalyear.thaispellinggame.R;
-import com.project.finalyear.thaispellinggame.model.UserModel;
+import com.project.finalyear.thaispellinggame.model.UserData;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import static java.security.AccessController.getContext;
 
 /**
  * Created by Namwan on 11/23/2017.
@@ -22,39 +20,43 @@ import static java.security.AccessController.getContext;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
-    private List<UserModel> list;
+    private List<UserData> list;
+    public final String img_profile_default_url = "https://firebasestorage.googleapis.com/v0/b/thaispellinggame-28cfe.appspot.com/o/Profile_Images%2Fdefault_profile_pic.png?alt=media&token=e7b8453d-82dd-431a-a93f-fb793081359b";
 
-    public UserAdapter(List<UserModel> list) {
+    public UserAdapter(List<UserData> list) {
         this.list = list;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.user_single_layout,parent,false));
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_single_layout,parent,false);
+
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
-        UserModel user = list.get(position);
-        holder.mName.setText(user.getName());
+        UserData data = list.get(position);
+        holder.mName.setText(data.getName());
 
-        //holder.mImage.setImageResource(Integer.parseInt(user.image));
-
-//        String status = holder.online.toString();
-//        if (status.equals("true"))
-//            holder.mOnline.setVisibility(View.VISIBLE);
-//        else
-//            holder.mOnline.setVisibility(View.INVISIBLE);
-
-        holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
-            @Override
-            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                menu.add(holder.getAdapterPosition(),0,0,"Name");
-                //menu.add(holder.getAdapterPosition(),0,0,"Image");
-                //menu.add(holder.getAdapterPosition(),0,0, "Online");
+        if (data.getImage() != null) {
+            if (data.getImage().equals("default_profile_pic")) {
+                Picasso.with(holder.mImage.getContext())
+                        .load(img_profile_default_url)
+                        .resize(70, 70)
+                        .centerCrop()
+                        .into(holder.mImage);
+            } else {
+                Picasso.with(holder.mImage.getContext())
+                        .load(data.getImage())
+                        .resize(70, 70)
+                        .centerCrop()
+                        .into(holder.mImage);
             }
-        });
+        }
+
 
     }
 
@@ -66,19 +68,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView mName;
-        //ImageView mImage;
-        //ImageView mOnline;
-        //Boolean online;
+        ImageView mImage,defaultImg;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             mName = (TextView) itemView.findViewById(R.id.user_single_name);
-            //mImage = (ImageView) itemView.findViewById(R.id.user_single_image);
-
-            //mOnline = (ImageView) itemView.findViewById(R.id.all_user_status);
-
-
+            mImage = (ImageView) itemView.findViewById(R.id.user_single_image);
+            defaultImg = (ImageView) itemView.findViewById(R.id.user_single_image);
         }
     }
 }

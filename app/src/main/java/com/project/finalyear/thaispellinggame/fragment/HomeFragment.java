@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.project.finalyear.thaispellinggame.R;
 import com.project.finalyear.thaispellinggame.activity.RandomPlayerActivity;
+import com.project.finalyear.thaispellinggame.model.MyBounceInterpolator;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -46,7 +47,6 @@ public class HomeFragment extends Fragment {
     private ImageView progressBar;
     private Button btnPlayGame;
 
-    public final String img_profile_default_url = "https://firebasestorage.googleapis.com/v0/b/thaispellinggame-28cfe.appspot.com/o/Profile_Images%2Fdefault_profile_pic.png?alt=media&token=e7b8453d-82dd-431a-a93f-fb793081359b";
     Context context;
 
 
@@ -75,13 +75,16 @@ public class HomeFragment extends Fragment {
 
         btnPlayGame = (Button) view.findViewById(R.id.btn_play_game);
 
-        final Animation anim = AnimationUtils.loadAnimation(context, R.anim.scale);
+        final Animation animBounce = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
+        // Use bounce interpolator with amplitude 0.2 and frequency 20
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        animBounce.setInterpolator(interpolator);
 
         btnPlayGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                view.startAnimation(anim);
+                view.startAnimation(animBounce);
 
                 mUserDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -132,15 +135,14 @@ public class HomeFragment extends Fragment {
 
                 String name = dataSnapshot.child("name").getValue(String.class);
                 String image = dataSnapshot.child("image").getValue(String.class);
-                String level = dataSnapshot.child("level").getValue(String.class);
-                String rank = dataSnapshot.child("rank").getValue(String.class);
-                String score = dataSnapshot.child("score").getValue(String.class);
-                String bestScore = dataSnapshot.child("bestScore").getValue(String.class);
+                String level = dataSnapshot.child("level").getValue().toString();
+                String rank = dataSnapshot.child("rank").getValue().toString();
+                String score = dataSnapshot.child("score").getValue().toString();
+                String bestScore = dataSnapshot.child("bestScore").getValue().toString();
 
 
                 if (image.equals("default_profile_pic")) {
-                    Picasso.with(context).load(img_profile_default_url)
-                            .placeholder(context.getResources().getDrawable(R.drawable.default_profile_pic))
+                    Picasso.with(context).load(R.drawable.default_profile_pic)
                             .error(context.getResources().getDrawable(R.drawable.default_profile_pic)).into(mDisplayImage);
 
                 } else {

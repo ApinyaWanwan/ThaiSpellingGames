@@ -148,21 +148,33 @@
                         android:gravity="center">
 
                         <ImageView
-                            android:id="@+id/icon_score"
+                            android:id="@+id/icon_best_score"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_centerVertical="true"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/crown"/>
+
+                        <TextView
+                            android:id="@+id/txtBestScore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/icon_best_score"
+                            android:text="Best Score"
+                            android:textStyle="bold"
+                            android:textColor="#82583B"
+                            android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/tv_best_score"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_toRightOf="@id/icon_score"
-                            android:text="000000"
+                            android:layout_toRightOf="@id/icon_best_score"
+                            android:layout_below="@id/txtBestScore"
+                            android:text="0"
                             android:textColor="#82583B"
                             android:textSize="20sp" />
+
 
                     </RelativeLayout>
 
@@ -175,19 +187,30 @@
                         android:gravity="center">
 
                         <ImageView
-                            android:id="@+id/icon_best_score"
+                            android:id="@+id/icon_score"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_centerVertical="true"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/coin"/>
+
+                        <TextView
+                            android:id="@+id/txtScore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/icon_score"
+                            android:text="Score"
+                            android:textStyle="bold"
+                            android:textColor="#82583B"
+                            android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/tv_score"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_toRightOf="@id/icon_best_score"
-                            android:text="000000"
+                            android:layout_toRightOf="@id/icon_score"
+                            android:layout_below="@id/txtScore"
+                            android:text="0"
                             android:textColor="#82583B"
                             android:textSize="20sp" />
 

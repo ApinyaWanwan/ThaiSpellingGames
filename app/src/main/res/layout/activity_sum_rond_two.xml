@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.SumRoundTwoActivity">
+    tools:context=".activity.SumGameFourActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,12 +29,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
                 android:background="@drawable/bg_edit_text"
                 android:gravity="center"
                 android:text="คำที่เลือก"

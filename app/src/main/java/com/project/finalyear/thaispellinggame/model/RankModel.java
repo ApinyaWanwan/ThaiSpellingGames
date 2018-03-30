@@ -3,11 +3,13 @@ package com.project.finalyear.thaispellinggame.model;
 public class RankModel {
     public String name;
     public String image;
-    public String rank;
-    public String score;
-    public String level;
+    public int rank;
+    public int score;
+    public int level;
 
 
+    public RankModel() {
+    }
 
     public String getName() {
         return name;
@@ -25,27 +27,27 @@ public class RankModel {
         this.image = image;
     }
 
-    public String getRank() {
+    public int getRank() {
         return rank;
     }
 
-    public void setRank(String rank) {
+    public void setRank(int rank) {
         this.rank = rank;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 }

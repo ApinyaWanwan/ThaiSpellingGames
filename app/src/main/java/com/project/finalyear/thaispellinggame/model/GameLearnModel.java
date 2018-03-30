@@ -33,4 +33,5 @@ public class GameLearnModel {
     public void setType(String type) {
         this.type = type;
     }
+
 }

@@ -1,165 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.LearningMainFragment">
+    android:background="@drawable/bg_game_four"
+    tools:context=".activity.GameFourActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:padding="5dp">
+    <include
+        layout="@layout/header_game"/>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_player1"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:elevation="5dp"
-                android:padding="6dp"
-                android:src="@drawable/default_profile_pic"
-                app:civ_border_color="#f8c866"
-                app:civ_border_width="3dp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="คะแนน" />
-
-                <TextView
-                    android:id="@+id/tvScoreOne"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="00" />
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/imgIconOne"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/correct"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/imgIconTwo"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/incorrect"
-                        android:visibility="invisible" />
-
-                </RelativeLayout>
-
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/timer" />
-
-            <TextView
-                android:id="@+id/tvTimer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="0"
-                android:textSize="30sp" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="คะแนน" />
-
-                <TextView
-                    android:id="@+id/tvScoreTwo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="00" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_bnt_1"
-                    android:src="@drawable/correct"
-                    android:visibility="invisible" />
-            </LinearLayout>
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_player2"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:elevation="5dp"
-                android:padding="6dp"
-                android:src="@drawable/default_profile_pic"
-                app:civ_border_color="#64d4f9"
-                app:civ_border_width="3dp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_weight="1"
-            android:background="#f8c866" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_weight="1"
-            android:background="#64d4f9" />
-    </LinearLayout>
-
+    <!-- body -->
     <RelativeLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -168,7 +19,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_game_four"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -176,40 +26,79 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
-            </LinearLayout>
+                android:orientation="horizontal"></LinearLayout>
 
             <LinearLayout
                 android:id="@+id/drop_mid"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
-            </LinearLayout>
+                android:orientation="horizontal"></LinearLayout>
 
             <LinearLayout
                 android:id="@+id/drop_right"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
-            </LinearLayout>
+                android:orientation="horizontal"></LinearLayout>
 
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnVocab"
+            android:id="@+id/btnCactus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/tabongpech"
-            android:paddingTop="60dp"
-            android:paddingLeft="20dp"
+            android:background="@drawable/cactus"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="66dp"
+            android:text=""
+            android:textColor="#FDE171"
+            android:textSize="25sp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnCactusLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/cactus_long"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp"
+            android:paddingTop="140dp"
+            android:text=""
+            android:textColor="#FDE171"
+            android:textSize="25sp"
+            android:visibility="invisible" />
+
+
+        <Button
+            android:id="@+id/btnCamel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/camel"
             android:paddingRight="20dp"
-            android:text="VOCAB"
-            android:textSize="25sp" />
+            android:text=""
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/imgBonus"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/bg_bonus"
+            android:visibility="invisible" />
+
+        <include
+            layout="@layout/button_setting"/>
 
     </RelativeLayout>
 

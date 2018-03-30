@@ -40,9 +40,9 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder
 
         RankData data = rankData.get(position);
         holder.mName.setText(data.getName());
-        holder.mScore.setText(data.getScore());
-        holder.mRank.setText(data.getRank());
-        holder.mLevel.setText(data.getLevel());
+        holder.mScore.setText(String.valueOf(data.getScore()));
+        holder.mRank.setText(String.valueOf(data.getRank()));
+        holder.mLevel.setText(String.valueOf(data.getLevel()));
 
         if (data.getImage().equals("default_profile_pic")){
             Picasso.with(holder.mImage.getContext())

@@ -14,7 +14,6 @@ import android.widget.Toolbar;
 
 import com.project.finalyear.thaispellinggame.R;
 import com.project.finalyear.thaispellinggame.fragment.HomeFragment;
-import com.project.finalyear.thaispellinggame.fragment.RankFragment;
 import com.project.finalyear.thaispellinggame.fragment.UserOnlineFragment;
 
 

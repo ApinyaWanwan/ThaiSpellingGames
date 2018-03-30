@@ -5,18 +5,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.project.finalyear.thaispellinggame.R;
+import com.project.finalyear.thaispellinggame.activity.GameLearnActivity;
+import com.project.finalyear.thaispellinggame.activity.GameLearnMainActivity;
 import com.project.finalyear.thaispellinggame.activity.GameOneActivity;
 
 
 public class LearningMainFragment extends Fragment{
-    Button btnLearning;
-    Button btnThreeLetterLearning;
+    CardView btnLearning;
+    CardView btnThreeLetterLearning;
+    CardView btnEveryDayLearning;
+    CardView btnGameLearn;
 
 
     public LearningMainFragment() {
@@ -41,18 +46,34 @@ public class LearningMainFragment extends Fragment{
     }
 
     private void initInstances(final View view){
-        btnLearning = (Button) view.findViewById(R.id.btnLearning);
+        btnLearning = (CardView) view.findViewById(R.id.btnLearning);
         btnLearning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentLearningMainSection();
             }
         });
-        btnThreeLetterLearning = (Button) view.findViewById(R.id.btnThreeLetterLearning);
+        btnThreeLetterLearning = (CardView) view.findViewById(R.id.btnThreeLetterLearning);
         btnThreeLetterLearning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentThreeLetter();
+            }
+        });
+        btnEveryDayLearning = (CardView) view.findViewById(R.id.btnEveryDayLearning);
+        btnEveryDayLearning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentWrongEveryDay();
+            }
+        });
+
+        btnGameLearn = (CardView) view.findViewById(R.id.btnGameLearn);
+        btnGameLearn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), GameLearnMainActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -86,5 +107,11 @@ public class LearningMainFragment extends Fragment{
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
+    private void FragmentWrongEveryDay() {
+        Fragment fragment = new WrongEveryDayFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_main, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }

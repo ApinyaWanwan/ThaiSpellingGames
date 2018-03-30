@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".fragment.RankFragment">
+    tools:context=".adapter.RankFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +15,10 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewRank"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
+            app:reverseLayout="true"
+            app:stackFromEnd="true">
 
         </android.support.v7.widget.RecyclerView>
 

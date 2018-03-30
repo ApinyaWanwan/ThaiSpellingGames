@@ -15,21 +15,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".activity.ThaiSpellingGame">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.GameFourActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activity.RegisterActivity"/>
-        <activity android:name=".activity.GameFourActivity"/>
         <activity android:name=".activity.GameOneActivity"/>
-        <activity android:name=".activity.RandomPlayerActivity"/>
+        <activity android:name=".activity.GameOneTutorialActivity"/>
+        <activity android:name=".activity.GameThreeActivity"/>
+        <activity android:name=".activity.GameThreeTutorialActivity"/>
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.GameFourTutorialActivity"/>
+        <activity android:name=".activity.GameFiveActivity"/>
+        <activity android:name=".activity.GameFiveTutorialActivity"/>
         <activity android:name=".activity.GameLearnActivity"/>
-        <activity android:name=".activity.SumRoundOneActivity"/>
-        <activity android:name=".activity.SumRoundTwoActivity"/>
+        <activity android:name=".activity.RandomPlayerActivity"/>
+        <activity android:name=".activity.SumGameOneActivity"/>
+        <activity android:name=".activity.SumGameFourActivity"/>
+        <activity android:name=".activity.SumGameThreeActivity"/>
+        <activity android:name=".activity.SumRoundFiveActivity"/>
         <activity android:name=".activity.SummaryActivity"/>
+        <activity android:name=".activity.QuizTestActivity"/>
+        <activity android:name=".activity.QuizSumActivity"/>
+        <activity android:name=".activity.GameLearnMainActivity"/>
 
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>

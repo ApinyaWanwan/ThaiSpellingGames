@@ -48,9 +48,7 @@ public class EditProfileFragment extends Fragment {
     EditText editUsername;
     EditText editEmail;
     Button btnSave;
-    //private Button btn_change_image;
 
-    public final String img_profile_default_url = "https://firebasestorage.googleapis.com/v0/b/thaispellinggame-28cfe.appspot.com/o/Profile_Images%2Fdefault_profile_pic.png?alt=media&token=e7b8453d-82dd-431a-a93f-fb793081359b";
     Context context;
 
     private final static int Gallery_Pick = 1;
@@ -101,7 +99,7 @@ public class EditProfileFragment extends Fragment {
 
                 if (image.equals("default_profile_pic")) {
 
-                    Picasso.with(getContext()).load(img_profile_default_url).resize(150,150)
+                    Picasso.with(getContext()).load(R.drawable.default_profile_pic).resize(150,150)
                             .centerCrop().into(edit_profile_image);
 
                 } else {

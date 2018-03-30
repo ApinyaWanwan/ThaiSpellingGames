@@ -12,34 +12,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="5.5"-->
-            <!--android:padding="10dp">-->
-
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Question"-->
-                <!--android:textSize="20sp" />-->
-
-        <!--</LinearLayout>-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:orientation="vertical">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <ProgressBar
                 android:id="@+id/progressbar_timer"
+                style="@android:style/Widget.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@android:style/Widget.ProgressBar.Horizontal"
                 android:max="100"
-                android:progress="0"
-                />
+                android:progress="0" />
 
         </LinearLayout>
 
@@ -47,8 +34,8 @@
         <LinearLayout
             android:id="@+id/drag_it_linear"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -61,8 +48,9 @@
 
                 <Button
                     android:id="@+id/one"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/tomato"
                     android:paddingTop="20dp"
                     android:text="Drag it"
@@ -72,8 +60,9 @@
 
                 <Button
                     android:id="@+id/two"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/tomato"
                     android:paddingTop="20dp"
                     android:text="Drag it"
@@ -83,8 +72,9 @@
 
                 <Button
                     android:id="@+id/three"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/tomato"
                     android:paddingTop="20dp"
                     android:text="Drag it"
@@ -103,8 +93,9 @@
 
                 <Button
                     android:id="@+id/four"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/tomato"
                     android:paddingTop="20dp"
                     android:text="Drag it"
@@ -114,8 +105,9 @@
 
                 <Button
                     android:id="@+id/five"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/tomato"
                     android:paddingTop="20dp"
                     android:text="Drag it"
@@ -125,8 +117,9 @@
 
                 <Button
                     android:id="@+id/six"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/tomato"
                     android:paddingTop="20dp"
                     android:text="Drag it"
@@ -144,8 +137,9 @@
 
                 <Button
                     android:id="@+id/seven"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/tomato"
                     android:paddingTop="20dp"
                     android:text="Drag it"
@@ -155,8 +149,9 @@
 
                 <Button
                     android:id="@+id/eight"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/tomato"
                     android:paddingTop="20dp"
                     android:text="Drag it"
@@ -166,8 +161,9 @@
 
                 <Button
                     android:id="@+id/nine"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/tomato"
                     android:paddingTop="20dp"
                     android:text="Drag it"
@@ -180,13 +176,12 @@
 
         <LinearLayout
             android:id="@+id/drop_here_linear"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_weight="6"
-            android:background="@drawable/basket"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/basket_empty"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -194,21 +189,9 @@
                 android:id="@+id/tv_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
                 android:text="Drop Here"
+                android:textColor="#ffffff"
                 android:textSize="30sp" />
-
-            <!--<TextView-->
-                <!--android:id="@+id/total"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textSize="20sp" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/success"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textSize="20sp" />-->
 
         </LinearLayout>
 
@@ -218,38 +201,82 @@
         android:id="@+id/happy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
         android:src="@drawable/happy"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/sad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
         android:src="@drawable/sad"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
-    <TextView
-        android:id="@+id/tvWin"
-        android:layout_width="wrap_content"
+    <!--<TextView-->
+    <!--android:id="@+id/tvWin"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/sad"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="40sp"-->
+    <!--android:textStyle="bold"-->
+    <!--android:visibility="visible"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/btnPlayAgain"
-        android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:textSize="40sp"
-        android:visibility="invisible"/>
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnPlayAgain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/button_playagain"
-        android:visibility="invisible"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_win"
+                android:layout_width="250dp"
+                android:layout_height="170dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/basket_full"
+                android:paddingTop="60dp"
+                android:textColor="#ffffff"
+                android:textSize="25sp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/btn_lose"
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:layout_alignLeft="@+id/btn_win"
+                android:layout_alignStart="@+id/btn_win"
+                android:layout_centerVertical="true"
+                android:background="@drawable/basket_empty"
+                android:textColor="#ffffff"
+                android:textSize="25sp"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnPlayAgain"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_playagain"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/layout_button_setting"
+        layout="@layout/button_setting" />
 
 </RelativeLayout>

@@ -1,11 +1,11 @@
 package com.project.finalyear.thaispellinggame.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,22 +16,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.project.finalyear.thaispellinggame.R;
-import com.project.finalyear.thaispellinggame.activity.GameLearnActivity;
 
 
 public class LearningMainSectionFragment extends Fragment {
 
-ImageView btnMaekok;
-    ImageView btnMaekom;
-    ImageView btnMaekong;
-    ImageView btnMaekon;
-    ImageView btnMaekod;
-    ImageView btnMaekob;
-    ImageView btnMaekery;
-    ImageView btnMaeguew;
+    CardView btnMaekok;
+    CardView btnMaekom;
+    CardView btnMaekong;
+    CardView btnMaekon;
+    CardView btnMaekod;
+    CardView btnMaekob;
+    CardView btnMaekery;
+    CardView btnMaeguew;
     Button btnBackLeaning;
-    Button btnGameLeaning;
-
 
     public LearningMainSectionFragment() {
         // Required empty public constructor
@@ -61,16 +58,15 @@ ImageView btnMaekok;
 
     private void initInstances(View view) {
         final Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.scale);
-        btnMaeguew = (ImageView) view.findViewById(R.id.btnMaeguew);
-        btnMaekon = (ImageView) view.findViewById(R.id.btnMaekon);
-        btnMaekom = (ImageView) view.findViewById(R.id.btnMaekom);
-        btnMaekod = (ImageView) view.findViewById(R.id.btnMaekod);
-        btnMaekob = (ImageView) view.findViewById(R.id.btnMaekob);
-        btnMaekok = (ImageView) view.findViewById(R.id.btnMaekok);
-        btnMaekery = (ImageView) view.findViewById(R.id.btnMaekery);
-        btnMaekong = (ImageView) view.findViewById(R.id.btnMaekong);
+        btnMaeguew = (CardView) view.findViewById(R.id.btnMaeguew);
+        btnMaekon = (CardView) view.findViewById(R.id.btnMaekon);
+        btnMaekom = (CardView) view.findViewById(R.id.btnMaekom);
+        btnMaekod = (CardView) view.findViewById(R.id.btnMaekod);
+        btnMaekob = (CardView) view.findViewById(R.id.btnMaekob);
+        btnMaekok = (CardView) view.findViewById(R.id.btnMaekok);
+        btnMaekery = (CardView) view.findViewById(R.id.btnMaekery);
+        btnMaekong = (CardView) view.findViewById(R.id.btnMaekong);
         btnBackLeaning = (Button) view.findViewById(R.id.btnBackLeaning);
-        btnGameLeaning = (Button) view.findViewById(R.id.btnGameLeaning);
 
 
         btnMaeguew.setOnClickListener(new View.OnClickListener() {
@@ -128,15 +124,9 @@ ImageView btnMaekok;
                 FragmentLearningMain();
             }
         });
-        btnGameLeaning.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), GameLearnActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
+
     public void FragmentLearningMaeGuew() {
         Fragment fragment = new LearningSectionMaegewFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

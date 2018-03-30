@@ -184,8 +184,8 @@
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="20dp"
-                        android:background="@drawable/icon_restart"
-                        android:visibility="invisible"/>
+                        android:background="@drawable/icon_repeat"
+                        android:visibility="visible"/>
 
 
 

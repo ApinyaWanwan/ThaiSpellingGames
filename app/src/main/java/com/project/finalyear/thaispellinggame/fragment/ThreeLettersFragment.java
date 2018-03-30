@@ -3,6 +3,7 @@ package com.project.finalyear.thaispellinggame.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,10 @@ import com.project.finalyear.thaispellinggame.R;
 public class ThreeLettersFragment extends Fragment {
 
     Button btnBackLeaning;
-    TextView tvHighPitched;
-    TextView tvMidrange;
-    TextView tvLowPitched;
+    CardView tvHighPitched;
+    CardView tvMidrange;
+    CardView tvLowPitched;
+
 
     public ThreeLettersFragment() {
         // Required empty public constructor
@@ -41,9 +43,9 @@ public class ThreeLettersFragment extends Fragment {
 
     private void initInstances(View view) {
         btnBackLeaning = (Button) view.findViewById(R.id.btnBackLeaning);
-        tvHighPitched = (TextView) view.findViewById(R.id.tvHighPitched);
-        tvMidrange = (TextView) view.findViewById(R.id.tvMidrange);
-        tvLowPitched = (TextView) view.findViewById(R.id.tvLowPitched);
+        tvHighPitched = (CardView) view.findViewById(R.id.tvHighPitched);
+        tvMidrange = (CardView) view.findViewById(R.id.tvMidrange);
+        tvLowPitched = (CardView) view.findViewById(R.id.tvLowPitched);
         btnBackLeaning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +70,7 @@ public class ThreeLettersFragment extends Fragment {
                 FragmentLowPitched();
             }
         });
+
 
     }
 

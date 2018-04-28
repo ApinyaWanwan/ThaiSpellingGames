@@ -26,8 +26,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.project.finalyear.thaispellinggame.R;
 import com.project.finalyear.thaispellinggame.activity.RandomPlayerActivity;
+import com.project.finalyear.thaispellinggame.activity.RandomPlayersActivity;
 import com.project.finalyear.thaispellinggame.model.MyBounceInterpolator;
+import com.project.finalyear.thaispellinggame.model.UserModel;
 import com.squareup.picasso.Picasso;
+
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -71,7 +75,8 @@ public class HomeFragment extends Fragment {
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
         mUserDatabase.keepSynced(true);
 
-        //Typeface font  = Typeface.createFromAsset(getActivity().getAssets(), "fonts/RSU_BOLD.ttf");
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference();
 
         btnPlayGame = (Button) view.findViewById(R.id.btn_play_game);
 
@@ -80,22 +85,25 @@ public class HomeFragment extends Fragment {
         MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
         animBounce.setInterpolator(interpolator);
 
+
         btnPlayGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 view.startAnimation(animBounce);
 
-                mUserDatabase = FirebaseDatabase.getInstance().getReference();
+                String name = mName.getText().toString();
 
-                mUserDatabase.child("Players").child(current_uid).child("state").setValue(true)
+                DatabaseReference userRef = ref.child("players").child(current_uid);
+                //userRef.child("name").setValue(name);
+                userRef.child("roomId").setValue("null")
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
                                 if (task.isSuccessful()){
 
-                                    Intent intent = new Intent(getActivity(), RandomPlayerActivity.class);
+                                    Intent intent = new Intent(getActivity(), RandomPlayersActivity.class);
                                     startActivity(intent);
 
 

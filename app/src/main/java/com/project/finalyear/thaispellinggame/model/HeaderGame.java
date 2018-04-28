@@ -3,6 +3,7 @@ package com.project.finalyear.thaispellinggame.model;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
@@ -48,9 +49,6 @@ public class HeaderGame {
     CountDownTimer countDownTimer;
     public String showScoreOne = "0";
     public String showScoreTwo = "0";
-
-    ArrayList<String> playerAnswer;
-    ArrayList<String> correctAnswer;
 
     public void setPlayerImage(final Activity activity) {
 
@@ -146,8 +144,7 @@ public class HeaderGame {
                 //addScore();
 
                 Intent intent = new Intent(context, nextActivity.getClass());
-                intent.putExtra("playerAnswer", playerAnswer);
-                intent.putExtra("correctAnswer", correctAnswer);
+                context.startActivity(intent);
                 ((Activity) context).finish();
             }
         }.start();

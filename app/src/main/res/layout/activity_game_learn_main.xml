@@ -3,8 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_learning_main"
     tools:context=".activity.GameLearnMainActivity">
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/loadingAnim"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        style="@style/AVLoadingIndicatorView.Large"
+        app:indicatorName="BallScaleMultipleIndicator"
+        app:indicatorColor="#EE3050"/>
+        <!--app:indicatorColor=""-->
 
     <ImageView
         android:id="@+id/cloud1"

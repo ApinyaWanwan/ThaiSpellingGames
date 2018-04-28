@@ -72,8 +72,7 @@ public class LearningMainFragment extends Fragment{
         btnGameLearn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), GameLearnMainActivity.class);
-                startActivity(intent);
+                GameLearnMainFragment();
             }
         });
     }
@@ -86,13 +85,13 @@ public class LearningMainFragment extends Fragment{
 //        transaction.commit();
 //    }
 
-//    public void FragmentSectionMaekok() {
-//        Fragment fragment = new LearningSectionMaekokFragment();
-//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//        transaction.replace(R.id.content_main, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
+    public void GameLearnMainFragment() {
+        Fragment fragment = new GameLearnMainFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_main, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
     public void FragmentLearningMainSection() {
         Fragment fragment = new LearningMainSectionFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

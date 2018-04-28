@@ -1,17 +1,25 @@
 package com.project.finalyear.thaispellinggame.controller;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.project.finalyear.thaispellinggame.activity.GameFiveTutorialActivity;
 import com.project.finalyear.thaispellinggame.activity.GameFourTutorialActivity;
 import com.project.finalyear.thaispellinggame.activity.GameOneTutorialActivity;
 import com.project.finalyear.thaispellinggame.activity.GameThreeTutorialActivity;
+import com.project.finalyear.thaispellinggame.activity.SummaryActivity;
 
+import java.util.ArrayList;
 import java.util.Random;
-
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by Namwan on 3/5/2018.
@@ -19,34 +27,43 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class RandomGame {
 
-    Context context;
+    public void randomGame(final Context context) {
 
-    public Random rnd = new Random();
+        final ArrayList<Class> activityList = new ArrayList<>();
+        activityList.add(GameOneTutorialActivity.class);
+        activityList.add(GameThreeTutorialActivity.class);
+        activityList.add(GameFourTutorialActivity.class);
+        activityList.add(GameFiveTutorialActivity.class);
 
-    public RandomGame(Context context) {
-        this.context = context;
-    }
 
-    public void RandomGame(){
+        Log.d("myActivityList", activityList.toString());
 
-        int x = rnd.nextInt(4);
+        Random generator = new Random();
+        int number = generator.nextInt(activityList.size()) + 1;
 
-        Intent intent = new Intent();
+        Class activity = null;
 
-        switch(x){
+        switch (number){
             case 1:
-                intent.setClass(getApplicationContext(), GameOneTutorialActivity.class);
+                activity = GameOneTutorialActivity.class;
                 break;
             case 2:
-                intent.setClass(getApplicationContext(), GameThreeTutorialActivity.class);
+                activity = GameThreeTutorialActivity.class;
                 break;
             case 3:
-                intent.setClass(getApplicationContext(), GameFourTutorialActivity.class);
+                activity = GameFourTutorialActivity.class;
                 break;
-            case 4:
-                intent.setClass(getApplicationContext(), GameFiveTutorialActivity.class);
+            default:
+                activity = GameFiveTutorialActivity.class;
                 break;
         }
+
+        Log.d("myActivity", activity.toString());
+
+        Intent intent = new Intent(context, activity);
+        context.startActivity(intent);
+        ((Activity)context).finish();
     }
+
 
 }

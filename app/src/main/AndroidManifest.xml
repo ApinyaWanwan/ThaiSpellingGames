@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".activity.ThaiSpellingGame">
-        <activity android:name=".activity.GameFourActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,16 +28,16 @@
         <activity android:name=".activity.GameOneTutorialActivity"/>
         <activity android:name=".activity.GameThreeActivity"/>
         <activity android:name=".activity.GameThreeTutorialActivity"/>
-        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.GameFourActivity"/>
         <activity android:name=".activity.GameFourTutorialActivity"/>
         <activity android:name=".activity.GameFiveActivity"/>
         <activity android:name=".activity.GameFiveTutorialActivity"/>
         <activity android:name=".activity.GameLearnActivity"/>
-        <activity android:name=".activity.RandomPlayerActivity"/>
+        <activity android:name=".activity.RandomPlayersActivity"/>
         <activity android:name=".activity.SumGameOneActivity"/>
         <activity android:name=".activity.SumGameFourActivity"/>
         <activity android:name=".activity.SumGameThreeActivity"/>
-        <activity android:name=".activity.SumRoundFiveActivity"/>
+        <activity android:name=".activity.SumGameFiveActivity"/>
         <activity android:name=".activity.SummaryActivity"/>
         <activity android:name=".activity.QuizTestActivity"/>
         <activity android:name=".activity.QuizSumActivity"/>

@@ -5,6 +5,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@drawable/bg_user_online"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
     android:id="@+id/linearLayoutUser">
 
     <RelativeLayout

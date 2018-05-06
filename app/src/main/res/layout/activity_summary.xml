@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearSum"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,15 +11,25 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" >
-
+        android:gravity="center">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imgCapture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20sp"
+                android:visibility="visible" />
+        </RelativeLayout>
         <TextView
             android:id="@+id/tvAward"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
-            android:text="คุณชนะ !"
+            android:layout_marginTop="10dp"
+            android:text=""
             android:textSize="36sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -26,10 +37,10 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_below="@id/tvAward"
-            android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:src="@drawable/default_profile_pic"
-            android:visibility="visible"/>
+            android:visibility="visible" />
 
         <ImageView
             android:id="@+id/imgLose"
@@ -47,73 +58,9 @@
             android:layout_below="@id/imgPlayer"
             android:layout_centerHorizontal="true"
             android:src="@drawable/win"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
 
-<!--<ImageView-->
-            <!--android:id="@+id/imgLose"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_below="@id/tvAward"-->
-            <!--android:layout_marginTop="20sp"-->
-            <!--android:src="@drawable/lose"-->
-            <!--android:visibility="invisible" />-->
-
-        <!--<ImageView-->
-            <!--android:id="@+id/imgWinner"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_below="@id/tvAward"-->
-            <!--android:layout_marginTop="20sp"-->
-            <!--android:src="@drawable/win"-->
-            <!--android:visibility="invisible"/>-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/tvAward">-->
-
-            <!--<de.hdodenhof.circleimageview.CircleImageView-->
-                <!--android:id="@+id/imgPlayer1"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="80dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_marginTop="50dp"-->
-                <!--android:src="@drawable/default_profile_pic"/>-->
-
-            <!--<RelativeLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center" >-->
-
-            <!--<ImageView-->
-                <!--android:id="@+id/imgLose"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:src="@drawable/lose"-->
-                <!--android:visibility="invisible" />-->
-
-            <!--<ImageView-->
-                <!--android:id="@+id/imgWinner"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:src="@drawable/win"-->
-                <!--android:visibility="invisible"/>-->
-            <!--</RelativeLayout>-->
-
-            <!--<de.hdodenhof.circleimageview.CircleImageView-->
-                <!--android:id="@+id/imgPlayer2"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="80dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_marginTop="50dp"-->
-                <!--android:src="@drawable/default_profile_pic"/>-->
-
-        <!--</LinearLayout>-->
 
     </RelativeLayout>
 
@@ -162,9 +109,9 @@
 
         <View
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="20dp"
             android:layout_gravity="center"
+            android:layout_weight="1"
             android:background="#f8c866" />
 
         <TextView
@@ -194,12 +141,13 @@
             android:gravity="left"
             android:text="0"
             android:textSize="24sp" />
+
         <View
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="20dp"
             android:layout_gravity="center"
-            android:background="#f8c866" />
+            android:layout_weight="1"
+            android:background="#E57373" />
 
         <TextView
             android:id="@+id/tvSumRoundTwoUser2"
@@ -228,12 +176,13 @@
             android:gravity="left"
             android:text="0"
             android:textSize="24sp" />
+
         <View
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="20dp"
             android:layout_gravity="center"
-            android:background="#f8c866" />
+            android:layout_weight="1"
+            android:background="#81C784" />
 
         <TextView
             android:id="@+id/tvSumRoundThreeUser2"
@@ -277,25 +226,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:gravity="bottom"
         android:orientation="horizontal">
 
-        <Button
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgHome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:background="@drawable/bg_bnt_grey"
-            android:gravity="center"
-            android:text="หน้าหลัก" />
+            android:elevation="5dp"
+            android:padding="6dp"
+            android:src="@drawable/home"
+            app:civ_border_color="#D32F2F"
+            app:civ_border_width="2dp"
+            app:civ_fill_color="#FFCDD2" />
 
-        <Button
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgShare"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:background="@drawable/bg_button_login"
-            android:text="แชร์" />
+            android:elevation="5dp"
+            android:padding="6dp"
+            android:src="@drawable/share"
+            app:civ_border_color="#D32F2F"
+            app:civ_border_width="2dp"
+            app:civ_fill_color="#FFCDD2" />
 
     </LinearLayout>
 

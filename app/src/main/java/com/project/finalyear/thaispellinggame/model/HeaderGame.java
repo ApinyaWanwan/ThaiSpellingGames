@@ -1,6 +1,7 @@
 package com.project.finalyear.thaispellinggame.model;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -68,24 +69,6 @@ public class HeaderGame {
         current_uid = mCurrentUser.getUid();
         mRefDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mPlayerDatabase = mRefDatabase.child("Match_player").child(current_uid);
-        mPlayerDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-
-                    user_id = child.getKey();
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
         mRefDatabase.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -150,9 +133,26 @@ public class HeaderGame {
         }.start();
     }
 
-    public void updateScore(int score) {
+    public void updateScore(final int score) {
 
-        mRefDatabase.child("Match_player").child(user_id).child(current_uid).child("playing_score").setValue(score);
+        mAuth = FirebaseAuth.getInstance();
+        mCurrentUser = mAuth.getCurrentUser();
+        current_uid = mCurrentUser.getUid();
+        mRefDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mRefDatabase.child("players").child(current_uid).child("roomId").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String roomId = dataSnapshot.getValue().toString();
+
+                mRefDatabase.child("rooms").child(roomId).child(current_uid).child("score").setValue(score);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -191,9 +191,9 @@ public class HeaderGame {
         });
     }
 
-    public void showMarkOne(Activity activity, boolean b) {
+    public void showMarkOne(Context context, boolean b) {
 
-        final Animation animation = AnimationUtils.loadAnimation(activity, R.anim.move);
+        final Animation animation = AnimationUtils.loadAnimation(context, R.anim.move);
 
         if (b == true) {
 

@@ -4,6 +4,17 @@ package com.project.finalyear.thaispellinggame.model;
 public class GameFive {
     private String word;
 
+    public String getAnswerCorrect() {
+        return answerCorrect;
+    }
+
+    public void setAnswerCorrect(String answerCorrect) {
+        this.answerCorrect = answerCorrect;
+    }
+
+    private String answerCorrect;
+    private String type;
+
     public String getWord() {
         return word;
     }
@@ -20,15 +31,16 @@ public class GameFive {
         this.type = type;
     }
 
-    private String type;
+
 
 
     public GameFive() {
 
     }
 
-    public GameFive(String word, String type) {
+    public GameFive(String word, String type,String answerCorrect) {
         this.word = word;
         this.type = type;
+        this.answerCorrect = answerCorrect;
     }
 }

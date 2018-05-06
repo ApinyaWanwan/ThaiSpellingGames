@@ -1,13 +1,19 @@
-package com.project.finalyear.thaispellinggame.adapter;
+package com.project.finalyear.thaispellinggame.fragment;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +29,7 @@ import com.project.finalyear.thaispellinggame.adapter.RankAdapter;
 import com.project.finalyear.thaispellinggame.model.RankData;
 import com.project.finalyear.thaispellinggame.model.RankModel;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,24 +44,51 @@ public class RankFragment extends Fragment {
     RecyclerView recyclerView;
 
 
+
+
+    Query query;
+    TextView tvRank;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_rank, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewRank);
 
+        CheckInternet();
+
+        return view;
+    }
+
+    public void CheckInternet() {
+        if (!isNetworkAvailable()) {
+            Toast.makeText(getContext(), "กรุณาเชื่อมต่ออินเทอร์เน็ตด้วยค่ะ !", Toast.LENGTH_SHORT).show();
+
+        } else {
+            pullRank();
+        }
+
+    }
+
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null;
+    }
+
+    public void pullRank() {
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-
         mUserDatabase = FirebaseDatabase.getInstance().getReference();
-        Query query = mUserDatabase.child("Users").orderByChild("score").limitToFirst(50);
-
+        query = mUserDatabase.child("Users").orderByChild("score").limitToFirst(50);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 rankData = new ArrayList<>();
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
 
                     RankData listData = new RankData();
 
@@ -66,13 +100,18 @@ public class RankFragment extends Fragment {
                     int rank = rankModel.getRank();
                     int level = rankModel.getLevel();
 
+
                     listData.setName(name);
                     listData.setScore(score);
-                    listData.setRank(rank);
+                     listData.setRank(rank);
                     listData.setLevel(level);
                     listData.setImage(image);
 
+
                     rankData.add(listData);
+
+
+
                 }
 
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -93,6 +132,11 @@ public class RankFragment extends Fragment {
             }
         });
 
-        return view;
+
+
     }
+
+
+
+
 }

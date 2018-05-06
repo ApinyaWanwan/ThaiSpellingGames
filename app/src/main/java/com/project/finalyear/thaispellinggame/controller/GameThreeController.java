@@ -38,7 +38,7 @@ public class GameThreeController {
                 }
                 currentGameThreeIndex = 0;
                 // ส่ง parameter currentGameThreeIndex and gameThreeArrayList ไปหน้า view
-                callBack.displayGameThree(currentGameThreeIndex,gameThreeArrayList);
+                callBack.displayGameThree(currentGameThreeIndex, gameThreeArrayList);
             }
 
             @Override

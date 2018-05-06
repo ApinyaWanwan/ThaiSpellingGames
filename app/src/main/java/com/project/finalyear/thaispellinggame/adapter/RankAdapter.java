@@ -2,6 +2,7 @@ package com.project.finalyear.thaispellinggame.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,11 @@ import com.project.finalyear.thaispellinggame.model.RoundOneModel;
 import com.project.finalyear.thaispellinggame.model.UserData;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder> {
 
@@ -29,7 +34,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder
 
     @Override
     public RankViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rank,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rank, parent, false);
 
         RankViewHolder viewHolder = new RankViewHolder(view);
         return viewHolder;
@@ -41,10 +46,10 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder
         RankData data = rankData.get(position);
         holder.mName.setText(data.getName());
         holder.mScore.setText(String.valueOf(data.getScore()));
-        holder.mRank.setText(String.valueOf(data.getRank()));
         holder.mLevel.setText(String.valueOf(data.getLevel()));
 
-        if (data.getImage().equals("default_profile_pic")){
+
+        if (data.getImage().equals("default_profile_pic")) {
             Picasso.with(holder.mImage.getContext())
                     .load(img_profile_default_url)
                     .resize(70, 70)
@@ -58,6 +63,8 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder
                     .into(holder.mImage);
         }
 
+
+
     }
 
     @Override
@@ -69,19 +76,20 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder
 
         TextView mName;
         TextView mScore;
-        TextView mRank;
         TextView mLevel;
-        ImageView mImage,defaultImg;
+        ImageView mImage, defaultImg;
+        TextView rank;
 
         public RankViewHolder(View itemView) {
             super(itemView);
 
             mName = (TextView) itemView.findViewById(R.id.user_name);
             mScore = (TextView) itemView.findViewById(R.id.user_score);
-            mRank = (TextView) itemView.findViewById(R.id.user_rank);
             mLevel = (TextView) itemView.findViewById(R.id.user_level);
             mImage = (ImageView) itemView.findViewById(R.id.user_image);
             defaultImg = (ImageView) itemView.findViewById(R.id.user_single_image);
+            rank = (TextView) itemView.findViewById(R.id.rank);
+
 
         }
     }

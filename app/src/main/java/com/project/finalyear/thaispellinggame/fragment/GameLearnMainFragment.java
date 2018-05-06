@@ -77,7 +77,7 @@ public class GameLearnMainFragment extends Fragment implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 v.startAnimation(animScale);
-                GameLearnTutorialsFragment();
+                FragmentGameLearn();
 
             }
         });
@@ -130,8 +130,8 @@ public class GameLearnMainFragment extends Fragment implements View.OnClickListe
 
 
     }
-    public void GameLearnTutorialsFragment() {
-        Fragment fragment = new GameLearnTutorialsFragment();
+    public void FragmentGameLearn() {
+        Fragment fragment = new GameLearnFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.content_main, fragment);
         transaction.addToBackStack(null);

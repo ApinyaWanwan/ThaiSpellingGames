@@ -1,5 +1,7 @@
 package com.project.finalyear.thaispellinggame.controller;
 
+import android.view.MotionEvent;
+
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -53,6 +55,8 @@ public class GameFiveController {
 
     public interface GameFiveCallBack {
         void displayGameFive(int index, ArrayList<GameFive> gameFiveArrayList);
+
+        boolean onTouchEvent(MotionEvent event);
 
         void onCancel(String massageError);
     }

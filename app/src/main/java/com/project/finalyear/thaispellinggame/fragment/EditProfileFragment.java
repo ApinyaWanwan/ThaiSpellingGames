@@ -56,6 +56,8 @@ public class EditProfileFragment extends Fragment {
 
     private DatabaseReference getUserDatabaseRef;
     private FirebaseAuth mAuth;
+    String nameEdit;
+    String emailEdit;
 
     @Nullable
     @Override
@@ -95,17 +97,19 @@ public class EditProfileFragment extends Fragment {
                 // get data show to edit text
                 editUsername.setText(name);
                 editEmail.setText(email);
+                editUsername.setSelection(editUsername.getText().length());
+                editEmail.setSelection(editEmail.getText().length());
 
+                    if (image.equals("default_profile_pic")) {
 
-                if (image.equals("default_profile_pic")) {
+                        Picasso.with(getContext()).load(R.drawable.default_profile_pic).resize(150, 150)
+                                .centerCrop().into(edit_profile_image);
 
-                    Picasso.with(getContext()).load(R.drawable.default_profile_pic).resize(150,150)
-                            .centerCrop().into(edit_profile_image);
+                    } else {
+                        Picasso.with(getContext()).load(image).resize(150, 150)
+                                .centerCrop().into(edit_profile_image);
+                    }
 
-                } else {
-                    Picasso.with(getContext()).load(image).resize(150,150)
-                            .centerCrop().into(edit_profile_image);
-                }
 
 
             }
@@ -129,10 +133,11 @@ public class EditProfileFragment extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String name = editUsername.getText().toString();
                 String email = editEmail.getText().toString();
 
+                editUsername.setSelection(editUsername.getText().length());
+                editEmail.setSelection(editEmail.getText().length());
 
                 // set data to firebase
                 if (name.isEmpty()) {
@@ -142,14 +147,15 @@ public class EditProfileFragment extends Fragment {
                 } else if (name.isEmpty() && email.isEmpty()) {
                     getUserDatabaseRef.child("name").setValue(name);
                     getUserDatabaseRef.child("email").setValue(email);
+
                 }else {
                     getUserDatabaseRef.child("name").setValue(name);
                     getUserDatabaseRef.child("email").setValue(email);
                 }
                 // show dialog success edit profile
                 dialogProfile();
-                editUsername.setText("");
-                editEmail.setText("");
+
+
             }
         });
     }
@@ -158,7 +164,7 @@ public class EditProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == Gallery_Pick && resultCode == RESULT_OK && data != null){
+        if (requestCode == Gallery_Pick && resultCode == RESULT_OK && data != null) {
             Uri imageUri = data.getData();
             CropImage.activity(imageUri)
                     .setGuidelines(CropImageView.Guidelines.ON)
@@ -179,7 +185,7 @@ public class EditProfileFragment extends Fragment {
                 filePath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(getActivity(), "กำลังบันทึกรูปภาพโปรไฟล์...", Toast.LENGTH_SHORT).show();
 
                             String downloadUri = task.getResult().getDownloadUrl().toString();
@@ -190,8 +196,7 @@ public class EditProfileFragment extends Fragment {
                                             Toast.makeText(getActivity(), "อัปเดตรูปภาพโปรไฟล์สำเร็จ!", Toast.LENGTH_SHORT).show();
                                         }
                                     });
-                        }
-                        else{
+                        } else {
                             Toast.makeText(getActivity(), "เกิดข้อผิดพลาดขณะอัปโหลดรูปภาพโปรไฟล์", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -202,6 +207,7 @@ public class EditProfileFragment extends Fragment {
             }
         }
     }
+
     private void dialogProfile() {
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

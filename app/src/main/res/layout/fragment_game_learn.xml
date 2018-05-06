@@ -266,7 +266,7 @@
                 android:background="@drawable/button_playagain"
                 android:visibility="invisible" />
         </LinearLayout>
-        <!--<include layout="@layout/activity_game" />-->
+        <include layout="@layout/activity_game" />
         <Button
             android:id="@+id/btnBack"
             android:layout_width="60dp"

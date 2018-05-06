@@ -79,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void createDatabase() throws IOException {
         boolean isDatabaseExist = checkDatabase();
-        if (isDatabaseExist) { //ถ้ามี DB อยู่แล้วไม่ต้องสร้างใหม่
+        if (!isDatabaseExist) { //(!isDatabaseExist) ถ้าไม่มี DB ให้เรียกเมธอด copyDatabase()
 
             this.getReadableDatabase();
             try {

@@ -374,11 +374,11 @@ public class GameLearnFragment extends Fragment implements View.OnTouchListener,
         correct = MediaPlayer.create(getContext(), R.raw.correct);
         wrong = MediaPlayer.create(getContext(), R.raw.wrong);
 
-//        btnSetting.setOnClickListener(this);
-//        btnSoundBG.setOnClickListener(this);
-//        btnNoSoundBG.setOnClickListener(this);
-//        btnSoundEffect.setOnClickListener(this);
-//        btnNoSoundEffect.setOnClickListener(this);
+        btnSetting.setOnClickListener(this);
+        btnSoundBG.setOnClickListener(this);
+        btnNoSoundBG.setOnClickListener(this);
+        btnSoundEffect.setOnClickListener(this);
+        btnNoSoundEffect.setOnClickListener(this);
         btnBack.setOnClickListener(this);
 
         animScale = AnimationUtils.loadAnimation(getContext(), R.anim.scale);

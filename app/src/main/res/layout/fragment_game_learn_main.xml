@@ -4,7 +4,6 @@
     android:id="@+id/mainGameLearn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:clipToPadding="true"
     android:background="@drawable/bg_learning_main"
     >
@@ -36,13 +35,13 @@
             android:layout_marginTop="80dp"
             android:src="@drawable/logo_game_learn" />
 
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_above="@id/startGame"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginBottom="60dp"-->
-            <!--android:src="@drawable/basket_empty" />-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/startGame"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="60dp"
+            android:src="@drawable/basket_empty" />
 
         <!--<include layout="@layout/button_setting"/>-->
 
@@ -51,11 +50,12 @@
             android:id="@+id/startGame"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
             android:background="@drawable/btn_start_game_learn" />
 
     </RelativeLayout>
+
 
 </LinearLayout>

@@ -26,9 +26,6 @@ public class SumRoundTwoAdapter extends BaseAdapter {
     public ArrayList<HashMap<String, String>> list;
     Activity activity;
     TextView answerRight;
-    String iconSelect;
-    ImageView imgCorrect;
-    ImageView imgIncorrect;
 
 
     public SumRoundTwoAdapter(Activity activity, ArrayList<HashMap<String,String>> list) {
@@ -58,23 +55,11 @@ public class SumRoundTwoAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.item_sum_game_two, null);
 
             answerRight = (TextView) view.findViewById(R.id.tvAnswerRight);
-            imgCorrect = (ImageView) view.findViewById(R.id.imgCorrect);
-            imgIncorrect = (ImageView) view.findViewById(R.id.imgIncorrect);
         }
 
         HashMap<String, String> map = list.get(position);
-        iconSelect = map.get(FIRST_COLUMN);
-        answerRight.setText(map.get(SECOND_COLUMN));
-        Log.d("RightCorrect", String.valueOf(iconSelect));
-        if ((iconSelect.equals("ถูก"))) {
-            Log.d("RightCorrect", String.valueOf(answerRight));
-            imgCorrect.setVisibility(View.VISIBLE);
-            imgIncorrect.setVisibility(View.INVISIBLE);
-        } else if ((iconSelect.equals("ผิด"))) {
-            Log.d("RightIncorrect", String.valueOf(answerRight));
-            imgIncorrect.setVisibility(View.VISIBLE);
-            imgCorrect.setVisibility(View.INVISIBLE);
-        }
+        answerRight.setText(map.get(FIRST_COLUMN));
+
         return view;
     }
 }

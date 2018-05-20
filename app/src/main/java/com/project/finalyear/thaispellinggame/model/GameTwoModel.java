@@ -5,13 +5,23 @@ package com.project.finalyear.thaispellinggame.model;
  */
 
 public class GameTwoModel {
+    private String mean;
     private String word;
 
     public GameTwoModel() {
     }
 
-    public GameTwoModel(String word) {
+    public GameTwoModel(String mean, String word) {
+        this.mean = mean;
         this.word = word;
+    }
+
+    public String getMean() {
+        return mean;
+    }
+
+    public void setMean(String mean) {
+        this.mean = mean;
     }
 
     public String getWord() {

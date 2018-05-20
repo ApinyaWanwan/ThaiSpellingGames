@@ -60,7 +60,7 @@ public class GridViewSuggestAdapter extends BaseAdapter {
                 button.setPadding(10,10,10,10);
                 button.setBackgroundColor(Color.rgb(128,199,229));
                 button.setTextColor(Color.WHITE);
-                button.setTextSize(18);
+                button.setTextSize(20);
                 button.setText(suggestSource.get(position));
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -84,15 +84,18 @@ public class GridViewSuggestAdapter extends BaseAdapter {
                             gameTwoFragment.suggestAdapter = new GridViewSuggestAdapter(gameTwoFragment.suggestSource,context,gameTwoFragment);
                             gameTwoFragment.gridViewSuggest.setAdapter(gameTwoFragment.suggestAdapter);
                             gameTwoFragment.suggestAdapter.notifyDataSetChanged();
+
                         }
                         else{
 
                             GameTwoFragment.showToast(gameTwoFragment.getContext(), "ตอบผิด!");
+
+                            gameTwoFragment.checkAnswer(false);
                             //Remove from suggest source
-//                            mainActivity.suggestSource.set(position,"null");
-//                            mainActivity.suggestAdapter = new GridViewSuggestAdapter(mainActivity.suggestSource,context,mainActivity);
-//                            mainActivity.gridViewSuggest.setAdapter(mainActivity.suggestAdapter);
-//                            mainActivity.suggestAdapter.notifyDataSetChanged();
+//                            gameTwoFragment.suggestSource.set(position,"null");
+//                            gameTwoFragment.suggestAdapter = new GridViewSuggestAdapter(mainActivity.suggestSource,context,mainActivity);
+//                            gameTwoFragment.gridViewSuggest.setAdapter(mainActivity.suggestAdapter);
+//                            gameTwoFragment.suggestAdapter.notifyDataSetChanged();
 
                         }
                     }
@@ -103,4 +106,5 @@ public class GridViewSuggestAdapter extends BaseAdapter {
             button = (Button)convertView;
         return button;
     }
+
 }

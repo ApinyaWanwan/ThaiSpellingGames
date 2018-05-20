@@ -48,6 +48,7 @@ public class GridViewAnswerAdapter extends BaseAdapter {
             button.setBackgroundColor(Color.LTGRAY);
             button.setTextColor(Color.BLACK);
             button.setText(String.valueOf(answerCharacter[position]));
+            button.setTextSize(25);
 
         }
         else

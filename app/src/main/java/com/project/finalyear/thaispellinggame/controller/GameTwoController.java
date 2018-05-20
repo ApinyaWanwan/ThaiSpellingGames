@@ -20,7 +20,7 @@ public class GameTwoController {
     public GameTwoController(GameTwoCallBack callBack) {
         this.callBack = callBack;
         databaseReference = FirebaseDatabase.getInstance().getReference()
-                .child("Game_Two");
+                .child("Game_blank");
         gameTwoArrayList = new ArrayList<GameTwoModel>();
 
     }
